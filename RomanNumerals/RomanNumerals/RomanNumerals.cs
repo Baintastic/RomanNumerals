@@ -12,6 +12,7 @@ namespace RomanNumerals
         {
             string romanNumerals = "";
             string[] symbols = { "I", "V", "X", "L", "C", "D" };
+           
             while (number != 0)
             {
                 if (number >= 10)
@@ -59,9 +60,7 @@ namespace RomanNumerals
                             number = Decrease(number, 10);
                         }
 
-
                     }
-
 
                 }
 
@@ -71,24 +70,22 @@ namespace RomanNumerals
                     if (number == 9)
                     {
                         romanNumerals += symbols[0] + symbols[2];
-                        number = Decrease(number, number);
                     }
                     else if (number >= 5 && number <= 8)
                     {
                         romanNumerals += symbols[1];
                         romanNumerals = AddRomanOnes(number - 5, romanNumerals, symbols);
-                        number = Decrease(number, number);
                     }
                     else if (number == 4)
                     {
                         romanNumerals += symbols[0] + symbols[1];
-                        number = Decrease(number, number);
                     }
-                    if (number <= 3)
-                    {
-                        romanNumerals = AddRomanOnes(number, romanNumerals, symbols);
-                        number = Decrease(number, number);
+                    else { 
+                        romanNumerals = AddRomanOnes(number, romanNumerals, symbols);                   
                     }
+                    number = Decrease(number, number);
+
+                    
                 }
             }
             return romanNumerals;
