@@ -11,9 +11,9 @@ namespace RomanNumerals.Tests
     public class RomanNumeralsTests
     {
 
-        [TestCase("I",1)]
+        [TestCase("I", 1)]
         [TestCase("III", 3)]
-        public void Convert_GivenANumberLessThan4_ShouldReturnItsRomanNumeral(string expected , int number)
+        public void Convert_GivenANumberLessThan4_ShouldReturnItsRomanNumeral(string expected, int number)
         {
             //---------------Arrange-------------------
             var sut = new RomanNumerals();
@@ -49,7 +49,6 @@ namespace RomanNumerals.Tests
 
 
         [TestCase("IX", 9)]
-        //[TestCase("VIII", 8)]
         public void Convert_Given9_ShouldReturnItsRomanNumeral(string expected, int number)
         {
             //---------------Arrange-------------------
@@ -61,10 +60,7 @@ namespace RomanNumerals.Tests
         }
 
         [TestCase("X", 10)]
-        [TestCase("XI", 11)]
-        [TestCase("XIX", 19)]
         [TestCase("XXI", 21)]
-        [TestCase("XXV", 25)]
         [TestCase("XXXIX", 39)]
         public void Convert_GivenANumberMoreThan9ButLessThan40_ShouldReturnItsRomanNumeral(string expected, int number)
         {
@@ -75,8 +71,81 @@ namespace RomanNumerals.Tests
             //---------------Assert -----------------------
             Assert.AreEqual(expected, actual);
         }
+        
+        [TestCase("XL", 40)]
+        [TestCase("XLIX", 49)]
+        public void Convert_GivenANumberMoreThan39ButLessThan50_ShouldReturnItsRomanNumeral(string expected, int number)
+        {
+            //---------------Arrange-------------------
+            var sut = new RomanNumerals();
+            //---------------Act ----------------------
+            var actual = sut.Convert(number);
+            //---------------Assert -----------------------
+            Assert.AreEqual(expected, actual);
+        }
 
+        [TestCase("L", 50)]
+        [TestCase("LV", 55)]
+        [TestCase("LXXXIX", 89)]
+        public void Convert_GivenANumberMoreThan49ButLessThan90_ShouldReturnItsRomanNumeral(string expected, int number)
+        {
+            //---------------Arrange-------------------
+            var sut = new RomanNumerals();
+            //---------------Act ----------------------
+            var actual = sut.Convert(number);
+            //---------------Assert -----------------------
+            Assert.AreEqual(expected, actual);
+        }
 
+        [TestCase("XC", 90)]
+        [TestCase("XCIX", 99)]
+        public void Convert_GivenANumberMoreThan89ButLessThan100_ShouldReturnItsRomanNumeral(string expected, int number)
+        {
+            //---------------Arrange-------------------
+            var sut = new RomanNumerals();
+            //---------------Act ----------------------
+            var actual = sut.Convert(number);
+            //---------------Assert -----------------------
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestCase("C", 100)]
+        [TestCase("CCI", 201)]
+        [TestCase("CCCXCIX",  399)]
+        public void Convert_GivenANumberMoreThan99ButLessThan400_ShouldReturnItsRomanNumeral(string expected, int number)
+        {
+            //---------------Arrange-------------------
+            var sut = new RomanNumerals();
+            //---------------Act ----------------------
+            var actual = sut.Convert(number);
+            //---------------Assert -----------------------
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestCase("CD", 400)]
+        [TestCase("CDXCIX", 499)]
+        public void Convert_GivenANumberMoreThan399ButLessThan500_ShouldReturnItsRomanNumeral(string expected, int number)
+        {
+            //---------------Arrange-------------------
+            var sut = new RomanNumerals();
+            //---------------Act ----------------------
+            var actual = sut.Convert(number);
+            //---------------Assert -----------------------
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestCase("D", 500)]
+        [TestCase("DCCLXXVII", 777)]
+        [TestCase("DCCCLXXV", 875)]
+        public void Convert_Given500_ShouldReturnItsRomanNumeral(string expected, int number)
+        {
+            //---------------Arrange-------------------
+            var sut = new RomanNumerals();
+            //---------------Act ----------------------
+            var actual = sut.Convert(number);
+            //---------------Assert -----------------------
+            Assert.AreEqual(expected, actual);
+        }
 
     }
 }
